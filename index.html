@@ -1,61 +1,16 @@
 <!DOCTYPE html>
-<html lang="he">
+<html lang="he" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>כפתור Popeye</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f5f5f5;
-        }
-
-        .popeye-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 200px;
-            height: 60px;
-            background-color: #ffcc00;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            text-decoration: none;
-            color: black;
-            font-weight: bold;
-            font-size: 18px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-        }
-
-        .popeye-button:hover {
-            background-color: #e6b800;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-        }
-
-        .popeye-button:active {
-            transform: translateY(1px);
-        }
-
-        .popeye-icon {
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
-            background-image: url('https://cdn.savedly.net/7fdjhaez');
-            background-size: contain;
-            background-repeat: no-repeat;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenVid — Popeye</title>
+<style>
+*{box-sizing:border-box}body{display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0;background:#f5f5f5;font-family:Arial,sans-serif}
+.popeye-button{display:flex;align-items:center;justify-content:center;gap:10px;width:200px;min-height:60px;padding:12px;background:#fc0;border-radius:30px;text-decoration:none;color:#111;font-weight:bold;font-size:18px;box-shadow:0 4px 8px #0003;transition:background .2s,transform .2s}
+.popeye-button:hover{background:#e6b800;transform:translateY(-2px)}.popeye-icon{width:30px;height:30px;background:url('https://cdn.savedly.net/7fdjhaez') center/contain no-repeat}
+</style>
 </head>
 <body>
-    <a href="/popeye" class="popeye-button">
-        <div class="popeye-icon"></div>
-        Popeye
-    </a>
+<a href="popeye/index.php" class="popeye-button"><span class="popeye-icon" aria-hidden="true"></span>Popeye</a>
 </body>
 </html>
