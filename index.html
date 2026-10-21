@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>כפתור Popeye</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+
+        .popeye-button {
+            position: relative;
+            width: 200px;
+            height: 60px;
+            background-color: #ffcc00;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .popeye-button:hover {
+            background-color: #e6b800;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        .popeye-button:active {
+            transform: translateY(1px);
+        }
+
+        .popeye-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .popeye-button:hover::before {
+            opacity: 1;
+        }
+
+        .popeye-text {
+            position: relative;
+            z-index: 1;
+            color: #000;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 60px;
+            text-align: center;
+        }
+
+        .popeye-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            background-image: url('https://cdn.savedly.net/7fdjhaez');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    </style>
+</head>
+<body>
+    <a href="https://SITE.COM/popeye" class="popeye-button">
+        <div class="popeye-icon"></div>
+        <span class="popeye-text">POPEYE</span>
+    </a>
+</body>
+</html>
+
