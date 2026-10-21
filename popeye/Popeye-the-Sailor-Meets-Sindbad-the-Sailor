@@ -63,7 +63,9 @@
     </video>
     
     <!-- שם הסרטון שהתווסף למטה עם הפונט החדש -->
-    <div class="Popeye the Sailor Meets Sindbad the Sailor"/div>
+       <!-- שם הסרטון שהתווסף למטה עם הפונט החדש -->
+    <div class="video-title">Popeye the Sailor Meets Sindbad the Sailor</div>
+
   </div>
 
 </body>
