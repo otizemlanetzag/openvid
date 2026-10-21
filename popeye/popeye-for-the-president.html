@@ -8,9 +8,10 @@
 *{box-sizing:border-box}html,body{min-height:100%;margin:0}body{min-height:100vh;padding:clamp(1rem,4vw,2rem);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;background:#fcf9f2;color:#222;font-family:Arial,sans-serif}
 .video-container{display:flex;flex-direction:column;align-items:center;gap:1rem;width:min(100%,960px)}video{width:100%;height:auto;max-height:75vh;background:#000;display:block}.video-title{font-size:clamp(1.4rem,4vw,2.5rem);text-align:center;overflow-wrap:anywhere}
 .navigation{display:flex;justify-content:center;flex-wrap:wrap;gap:.75rem}.navigation a{display:inline-block;padding:.7rem 1rem;border-radius:8px;background:#1769aa;color:#fff;text-decoration:none}.navigation a:hover{background:#0f4f85}
-</style>
+.site-search{display:flex;gap:8px;align-items:center;width:min(100% - 32px,560px);margin:16px auto;padding:0}.site-search input{min-width:0;flex:1;padding:11px 13px;border:1px solid #b7c8d5;border-radius:9px;font:inherit}.site-search button{padding:11px 17px;border:0;border-radius:9px;background:#168bd2;color:#fff;font:inherit;font-weight:bold;cursor:pointer}.site-search button:hover{background:#0872b6}</style>
 </head>
 <body>
+<form class="site-search" action="../search.html" method="get" role="search"><input type="search" name="q" placeholder="Search videos..." aria-label="Search videos" required><button type="submit">Search</button></form>
 <main class="video-container">
 <video controls playsinline preload="metadata">
 <source src="https://cdn.savedly.net/yw94umbn" type="video/mp4">
