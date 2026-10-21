@@ -1,70 +1,23 @@
-<!DOCTYPE html>
-<html lang="he" dir="rtl">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>popeye for the president</title>
-  
-  <!-- חיבור לשרתים של גוגל פונטס וייבוא הפונט של הכרזת העצמאות -->
-  <link rel="preconnect" href="https://googleapis.com">
-  <link rel="preconnect" href="https://gstatic.com" crossorigin>
-  <link href="https://googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
-
-  <style>
-    /* מוודא שכל העמוד תופס את מלוא גובה הדפדפן */
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-
-    /* ממרכז את תיבת התוכן בצורה מושלמת אופקית ואנכית */
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #fcf9f2; /* צבע רקע עדין בסגנון נייר קלף עתיק */
-    }
-
-    /* תיבה המאחדת את הסרטון והטקסט ומסדרת אותם אחד מתחת לשני */
-    .video-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 640px;
-      max-width: 95%; /* מונע יציאה מהמסך בטלפונים */
-    }
-
-    /* הגדרות גודל לסרטון */
-    video {
-      width: 100%;
-      height: auto;   /* שומר על יחס הגובה-רוחב המקורי */
-      display: block;
-    }
-
-    /* עיצוב שם הסרטון מתחת לנגן עם פונט הכרזת העצמאות */
-    .video-title {
-      margin-top: 15px; /* מרחק קטן בין הסרטון לטקסט */
-      font-family: 'Monsieur La Doulaise', cursive; /* הפונט ההיסטורי החדש */
-      font-size: 42px;   /* גודל מותאם אישית לפונט קליגרפי */
-      font-weight: 400;  /* משקל רגיל כדי לשמור על קליגרפיה חלקה ולא עבה מדי */
-      color: #222;       /* צבע הטקסט */
-      text-align: center;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Popeye for the President</title>
+<style>
+*{box-sizing:border-box}html,body{min-height:100%;margin:0}body{min-height:100vh;padding:clamp(1rem,4vw,2rem);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;background:#fcf9f2;color:#222;font-family:Arial,sans-serif}
+.video-container{display:flex;flex-direction:column;align-items:center;gap:1rem;width:min(100%,960px)}video{width:100%;height:auto;max-height:75vh;background:#000;display:block}.video-title{font-size:clamp(1.4rem,4vw,2.5rem);text-align:center;overflow-wrap:anywhere}
+.navigation{display:flex;justify-content:center;flex-wrap:wrap;gap:.75rem}.navigation a{display:inline-block;padding:.7rem 1rem;border-radius:8px;background:#1769aa;color:#fff;text-decoration:none}.navigation a:hover{background:#0f4f85}
+</style>
 </head>
 <body>
-
-  <!-- תיבת המכולה שמחזיקה את הסרטון והשם שלו יחד במרכז -->
-  <div class="video-container">
-    <video controls>
-      <source src="https://cdn.savedly.net/yw94umbn">
-      sorry, we have an error. try switching to another browser.
-    </video>
-    
-    <!-- שם הסרטון שהתווסף למטה עם הפונט החדש -->
-    <div class="video-title">popeye for the president</div>
-  </div>
-
+<main class="video-container">
+<video controls playsinline preload="metadata">
+<source src="https://cdn.savedly.net/yw94umbn" type="video/mp4">
+הדפדפן לא הצליח להציג את הסרטון. אפשר לנסות לפתוח בדפדפן אחר.
+</video>
+<div class="video-title">Popeye for the President</div>
+<nav class="navigation" aria-label="ניווט"><a href="index.php">כל הסרטונים</a><a href="../index.html">עמוד הבית</a></nav>
+</main>
 </body>
 </html>
