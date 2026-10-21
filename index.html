@@ -3,15 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OpenVid — Popeye</title>
+<title>OpenVid — Video Collections</title>
 <style>
-*{box-sizing:border-box}body{display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0;background:#f5f5f5;font-family:Arial,sans-serif}
-.popeye-button{display:flex;align-items:center;justify-content:center;gap:10px;width:200px;min-height:60px;padding:12px;background:#fc0;border-radius:30px;text-decoration:none;color:#111;font-weight:bold;font-size:18px;box-shadow:0 4px 8px #0003;transition:background .2s,transform .2s}
-.popeye-button:hover{background:#e6b800;transform:translateY(-2px)}.popeye-icon{width:30px;height:30px;background:url('https://cdn.savedly.net/7fdjhaez') center/contain no-repeat}
-.site-search{display:flex;gap:8px;align-items:center;width:min(100% - 32px,560px);margin:16px auto;padding:0}.site-search input{min-width:0;flex:1;padding:11px 13px;border:1px solid #b7c8d5;border-radius:9px;font:inherit}.site-search button{padding:11px 17px;border:0;border-radius:9px;background:#168bd2;color:#fff;font:inherit;font-weight:bold;cursor:pointer}.site-search button:hover{background:#0872b6}</style>
+*{box-sizing:border-box}
+body{min-height:100vh;margin:0;padding:24px;background:#f5f5f5;font-family:Arial,sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px}
+.site-search{display:flex;gap:8px;align-items:center;width:min(100%,560px);margin:0 auto 12px}
+.site-search input{min-width:0;flex:1;padding:12px 14px;border:1px solid #b7c8d5;border-radius:9px;font:inherit}
+.site-search button{padding:12px 18px;border:0;border-radius:9px;background:#168bd2;color:#fff;font:inherit;font-weight:bold;cursor:pointer}
+.collections{display:flex;justify-content:center;align-items:stretch;flex-wrap:wrap;gap:18px}
+.collection{display:flex;align-items:center;justify-content:center;gap:10px;width:200px;min-height:60px;padding:12px;border-radius:30px;text-decoration:none;color:#111;font-weight:bold;font-size:18px;box-shadow:0 4px 8px #0003;transition:transform .2s,filter .2s}
+.collection:hover{transform:translateY(-2px);filter:brightness(.95)}
+.popeye{background:#fc0}.looney{background:#b8e5ff}
+.popeye-icon{width:30px;height:30px;background:url('https://cdn.savedly.net/7fdjhaez') center/contain no-repeat}
+@media(max-width:480px){body{padding:16px}.collection{width:min(100%,280px)}}
+</style>
 </head>
 <body>
 <form class="site-search" action="./search.html" method="get" role="search"><input type="search" name="q" placeholder="Search videos..." aria-label="Search videos" required><button type="submit">Search</button></form>
-<a href="./popeye/index.html" class="popeye-button"><span class="popeye-icon" aria-hidden="true"></span>Popeye</a>
+<main class="collections" aria-label="Video collections">
+<a href="./popeye/index.html" class="collection popeye"><span class="popeye-icon" aria-hidden="true"></span>Popeye</a>
+<a href="./looney-tunes/index.html" class="collection looney">LOONEY TUNES</a>
+</main>
 </body>
 </html>
