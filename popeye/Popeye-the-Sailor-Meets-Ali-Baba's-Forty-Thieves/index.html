@@ -3,40 +3,92 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Popeye the Sailor Meets Ali Baba's Forty Thieves</title>
+<title>Popeye the Sailor Meets Ali Baba's Forty Thieves — OpenVID</title>
 <style>
-*{box-sizing:border-box}html,body{min-height:100%;margin:0}body{min-height:100vh;padding:clamp(1rem,4vw,2rem);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;background:#fcf9f2;color:#222;font-family:Arial,sans-serif}
-.video-container{display:flex;flex-direction:column;align-items:center;gap:1rem;width:min(100%,960px)}video{width:100%;height:auto;max-height:75vh;background:#000;display:block}.video-title{font-size:clamp(1.4rem,4vw,2.5rem);text-align:center;overflow-wrap:anywhere}
-.caption-control{border:0;border-radius:8px;padding:.7rem 1rem;background:#172f4d;color:#fff;font:inherit;font-weight:bold;cursor:pointer}.caption-control:hover{background:#254b75}
+*{box-sizing:border-box}
+:root{color-scheme:light;--sky:#cfe2f2;--pink:#ff00df;--ink:#172f4d}
+html,body{min-height:100%;margin:0}
+body{min-height:100vh;padding:clamp(12px,3vw,28px);display:flex;flex-direction:column;align-items:center;gap:18px;background:#fcf9f2;color:#222;font-family:Arial,sans-serif}
+.site-search{display:flex;gap:8px;align-items:center;width:min(100%,560px);margin:0 auto;padding:0}
+.site-search input{min-width:0;flex:1;padding:11px 13px;border:1px solid #b7c8d5;border-radius:9px;font:inherit}
+.site-search button,.nav-link{padding:10px 15px;border:0;border-radius:8px;background:#1769aa;color:#fff;font:inherit;font-weight:bold;text-decoration:none;cursor:pointer}
+.player{width:min(100%,1000px);background:var(--sky);border:1px solid #9eabb5;box-shadow:0 2px 8px #00000012}
+video{display:block;width:100%;max-height:72vh;aspect-ratio:16/9;background:var(--sky);object-fit:contain}
 video::cue{background:rgba(0,0,0,.85);color:#fff;font-size:1.15rem}
-.navigation{display:flex;justify-content:center;flex-wrap:wrap;gap:.75rem}.navigation a{display:inline-block;padding:.7rem 1rem;border-radius:8px;background:#1769aa;color:#fff;text-decoration:none}.navigation a:hover{background:#0f4f85}
-.site-search{display:flex;gap:8px;align-items:center;width:min(100% - 32px,560px);margin:16px auto;padding:0}.site-search input{min-width:0;flex:1;padding:11px 13px;border:1px solid #b7c8d5;border-radius:9px;font:inherit}.site-search button{padding:11px 17px;border:0;border-radius:9px;background:#168bd2;color:#fff;font:inherit;font-weight:bold;cursor:pointer}.site-search button:hover{background:#0872b6}</style>
+.controls{height:61px;padding:0 16px;display:flex;align-items:center;gap:14px;background:var(--sky);color:#111}
+.progress{height:3px;flex:1;min-width:25px;position:relative;background:var(--pink);cursor:pointer;touch-action:pan-y}
+.progress-fill{height:100%;width:0;background:var(--pink)}
+.knob{position:absolute;top:50%;left:0;width:16px;height:16px;border-radius:50%;background:var(--pink);border:1px solid #a0008e;transform:translate(-50%,-50%);pointer-events:none}
+.control-button{border:0;background:transparent;color:#111;padding:4px 1px;font:inherit;cursor:pointer;white-space:nowrap}
+.control-button:focus-visible,.progress:focus-visible{outline:2px solid #1769aa;outline-offset:3px}
+.cc{font-size:13px;font-weight:bold;letter-spacing:.2px}
+.speed{font-size:13px}
+.volume{width:22px;height:22px;display:flex;align-items:center;justify-content:center}
+.volume svg{width:18px;height:18px}
+.download{display:inline-flex;align-items:center;justify-content:center;min-width:37px;height:32px;border:1px solid #8b9daa;border-radius:2px;color:#172f4d;text-decoration:none;background:#d9e9f5;font-size:19px}
+.download:hover{background:#fff}
+.video-title{font-size:clamp(1.2rem,3vw,2rem);text-align:center;overflow-wrap:anywhere}
+.navigation{display:flex;justify-content:center;flex-wrap:wrap;gap:10px}
+@media(max-width:440px){.controls{gap:10px;padding:0 10px}.volume{display:none}.download{min-width:32px}.control-button{font-size:13px}}
+</style>
 </head>
 <body>
 <form class="site-search" action="../../search.html" method="get" role="search"><input type="search" name="q" placeholder="Search videos..." aria-label="Search videos" required><button type="submit">Search</button></form>
-<main class="video-container">
-<video controls playsinline preload="metadata">
+<main class="player" aria-label="Video player">
+<video id="video" playsinline preload="metadata">
 <source src="https://archive.org/download/popeye-the-sailor-meets-ali-babas-forty-thieves-1937_202405/Popeye%20the%20Sailor%20Meets%20Ali%20Baba%27s%20Forty%20Thieves%20%281937%29.mp4" type="video/mp4">
 <track id="english-captions" kind="subtitles" src="./Popeye-the-Sailor-Meets-Ali-Baba%27s-Forty-Thieves.vtt" srclang="en" label="English" default>
-Your browser could not play this video. Try opening it in another browser.
+Your browser could not play this video.
 </video>
-<button class="caption-control" id="caption-toggle" type="button" aria-pressed="true">Turn captions off</button>
-<div class="video-title">Popeye the Sailor Meets Ali Baba's Forty Thieves</div>
-<nav class="navigation" aria-label="Navigation"><a href="../index.html">All Popeye Videos</a><a href="../index.html">Home</a></nav>
+<div class="controls" aria-label="Playback controls">
+<div id="progress" class="progress" role="slider" tabindex="0" aria-label="Video progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="progress-fill" class="progress-fill"></div><span id="knob" class="knob"></span></div>
+<button id="captions" class="control-button cc" type="button" aria-label="Turn captions off" aria-pressed="true">CC</button>
+<button id="volume" class="control-button volume" type="button" aria-label="Mute audio">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3"/><path d="M16 9a5 5 0 0 1 0 6"/><path d="M18.5 6.5a9 9 0 0 1 0 11"/></svg>
+</button>
+<button id="speed" class="control-button speed" type="button" aria-label="Playback speed">1.0X</button>
+<a class="download" href="https://archive.org/download/popeye-the-sailor-meets-ali-babas-forty-thieves-1937_202405/Popeye%20the%20Sailor%20Meets%20Ali%20Baba%27s%20Forty%20Thieves%20%281937%29.mp4" download aria-label="Download video" title="Download video">↓</a>
+</div>
 </main>
+<div class="video-title">Popeye the Sailor Meets Ali Baba's Forty Thieves</div>
+<nav class="navigation" aria-label="Navigation"><a class="nav-link" href="../index.html">All Popeye Videos</a><a class="nav-link" href="../../index.html">Home</a></nav>
 <script>
 (() => {
-  const video = document.querySelector("video");
-  const track = document.getElementById("english-captions");
-  const button = document.getElementById("caption-toggle");
-  if (!video || !track || !button) return;
-  const textTrack = track.track;
-  const show = () => { textTrack.mode = "showing"; button.textContent = "Turn captions off"; button.setAttribute("aria-pressed", "true"); };
-  const hide = () => { textTrack.mode = "disabled"; button.textContent = "Turn captions on"; button.setAttribute("aria-pressed", "false"); };
-  track.addEventListener("load", show);
-  video.addEventListener("loadedmetadata", show);
-  button.addEventListener("click", () => textTrack.mode === "showing" ? hide() : show());
-  show();
+ const video=document.getElementById('video');
+ const track=document.getElementById('english-captions');
+ const captions=document.getElementById('captions');
+ const progress=document.getElementById('progress');
+ const fill=document.getElementById('progress-fill');
+ const knob=document.getElementById('knob');
+ const speed=document.getElementById('speed');
+ const volume=document.getElementById('volume');
+ const rates=[1,1.25,1.5,1.75,2,0.5,0.75];
+ let rateIndex=0;
+ const showCaptions=()=>{if(track.track)track.track.mode='showing';captions.setAttribute('aria-pressed','true');captions.setAttribute('aria-label','Turn captions off');};
+ const hideCaptions=()=>{if(track.track)track.track.mode='disabled';captions.setAttribute('aria-pressed','false');captions.setAttribute('aria-label','Turn captions on');};
+ track.addEventListener('load',showCaptions);
+ video.addEventListener('loadedmetadata',showCaptions);
+ captions.addEventListener('click',()=>captions.getAttribute('aria-pressed')==='true'?hideCaptions():showCaptions());
+ video.addEventListener('click',()=>video.paused?video.play():video.pause());
+ video.addEventListener('timeupdate',()=>{
+  const pct=video.duration?video.currentTime/video.duration*100:0;
+  fill.style.width=pct+'%';knob.style.left=pct+'%';
+  progress.setAttribute('aria-valuenow',String(Math.round(pct)));
+ });
+ const seek=e=>{
+  if(!video.duration)return;
+  const r=progress.getBoundingClientRect();
+  video.currentTime=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width))*video.duration;
+ };
+ progress.addEventListener('click',seek);
+ progress.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();if(video.duration)video.currentTime=Math.max(0,Math.min(video.duration,video.currentTime+(e.key==='ArrowRight'?5:-5)));}
+  if(e.key==='Home'){video.currentTime=0;}
+  if(e.key==='End'&&video.duration){video.currentTime=video.duration;}
+ });
+ speed.addEventListener('click',()=>{rateIndex=(rateIndex+1)%rates.length;video.playbackRate=rates[rateIndex];speed.textContent=video.playbackRate.toFixed(2).replace(/0$/,'')+'X';});
+ volume.addEventListener('click',()=>{video.muted=!video.muted;volume.setAttribute('aria-label',video.muted?'Unmute audio':'Mute audio');volume.style.opacity=video.muted?'.5':'1';});
+ showCaptions();
 })();
 </script>
 </body>
