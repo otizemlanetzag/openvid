@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Search — OpenVid</title>
+<meta name="description" content="Search OpenVID's video collections by title or keyword.">
+<title>Search — OpenVID</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#fcf9f2;color:#222;font-family:Arial,sans-serif}
 .site-header{padding:16px clamp(16px,4vw,48px);background:#071b35;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
@@ -13,31 +14,37 @@
 .search-form button{border:0;border-radius:9px;padding:12px 18px;background:#168bd2;color:#fff;font:inherit;font-weight:bold;cursor:pointer}
 main{width:min(100% - 32px,900px);margin:36px auto}
 h1{font-size:clamp(1.5rem,4vw,2.2rem)}.results{display:grid;gap:12px}.result{display:block;padding:16px;border-radius:10px;background:#fff;border:1px solid #e4e4e4;color:#1769aa;text-decoration:none;font-weight:bold}.result:hover{background:#eef8ff}
-.muted{color:#536575}
+.muted{color:#536575}.site-footer{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;padding:24px}.site-footer a{color:#1769aa}
 @media(max-width:560px){.site-header{align-items:stretch}.search-form{max-width:none;margin:0}.brand{align-self:flex-start}}
 </style>
 </head>
 <body>
-<header class="site-header"><a class="brand" href="./index.html">OpenVid</a>
+<header class="site-header"><a class="brand" href="./index.html">OpenVID</a>
 <form class="search-form" action="./search.html" method="get" role="search"><input type="search" name="q" id="q" placeholder="Search videos..." aria-label="Search videos" required><button type="submit">Search</button></form>
 </header>
 <main><h1 id="heading">Search results</h1><p class="muted" id="summary"></p><div class="results" id="results"></div></main>
+<footer class="site-footer"><a href="./terms.html">Terms of Use</a><a href="./privacy.html">Privacy Policy</a><a href="./guidelines.html">Submission Guidelines</a></footer>
 <script>
 const videos = [
- {title:"Popeye",url:"./popeye/index.html",terms:"popeye videos cartoon"},
- {title:"Falling Hare",url:"./looney-tunes/falling-hare.html",terms:"falling hare bugs bunny looney tunes cartoon"},
- {title:"Looney Tunes",url:"./looney-tunes/index.html",terms:"looney tunes cartoons bugs bunny"},
- {title:"Popeye the Sailor Meets Ali Baba's Forty Thieves",url:"./popeye/Popeye-the-Sailor-Meets-Ali-Baba's-Forty-Thieves.HTML",terms:"ali baba forty thieves sailor"},
- {title:"Popeye the Sailor Meets Sindbad the Sailor",url:"./popeye/Popeye-the-Sailor-Meets-Sindbad-the-Sailor.HTML",terms:"sindbad sailor"},
- {title:"Popeye for the President",url:"./popeye/popeye-for-the-president.html",terms:"president popeye"}
+ {title:"Popeye collection",url:"./popeye/index.html",terms:"popeye videos cartoon sailor"},
+ {title:"Aladdin and His Wonderful Lamp",url:"./popeye/Aladdin-and-His-Wonderful-Lamp/index.html",terms:"popeye aladdin wonderful lamp"},
+ {title:"Popeye the Sailor Meets Ali Baba's Forty Thieves",url:"./popeye/Popeye-the-Sailor-Meets-Ali-Baba's-Forty-Thieves/index.html",terms:"popeye ali baba forty thieves sailor"},
+ {title:"Popeye the Sailor Meets Sindbad the Sailor",url:"./popeye/Popeye-the-Sailor-Meets-Sindbad-the-Sailor/index.html",terms:"popeye sindbad sailor"},
+ {title:"Popeye for the President",url:"./popeye/popeye-for-the-president/index.html",terms:"popeye president"},
+ {title:"Little Swee'pea (1936)",url:"./popeye/little-sweepea/index.html",terms:"popeye little sweepea swee'pea 1936"},
+ {title:"Looney Tunes collection",url:"./looney-tunes/index.html",terms:"looney tunes cartoons bugs bunny"},
+ {title:"Falling Hare",url:"./looney-tunes/falling-hare/index.html",terms:"falling hare bugs bunny looney tunes cartoon"}
 ];
-const params=new URLSearchParams(location.search), query=(params.get("q")||"").trim().toLowerCase();
-document.getElementById("q").value=params.get("q")||"";
-document.getElementById("heading").textContent=query?'Results for "'+query+'"':"Search OpenVid";
-const matches=videos.filter(v=>(v.title+" "+v.terms).toLowerCase().includes(query));
+const params=new URLSearchParams(window.location.search);
+const rawQuery=params.get("q")||"";
+const query=rawQuery.trim().toLowerCase();
+document.getElementById("q").value=rawQuery;
+document.getElementById("heading").textContent=query?'Results for "'+rawQuery.trim()+'"':"Search OpenVID";
+const matches=query?videos.filter(v=>(v.title+" "+v.terms).toLowerCase().includes(query)):[];
 document.getElementById("summary").textContent=query?matches.length+" result(s) found.":"Enter a title or keyword to find a video.";
 const root=document.getElementById("results");
-if(query){if(matches.length){matches.forEach(v=>{const a=document.createElement("a");a.className="result";a.href=v.url;a.textContent=v.title;root.appendChild(a);});}else{document.getElementById("summary").textContent="No results found. Try a different search term.";}}
+matches.forEach(v=>{const a=document.createElement("a");a.className="result";a.href=v.url;a.textContent=v.title;root.appendChild(a);});
+if(query&&!matches.length)document.getElementById("summary").textContent="No results found. Try a different search term.";
 </script>
 </body>
 </html>
