@@ -3,18 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OpenVid — Video Collections</title>
+<meta name="description" content="Watch and download classic public-domain video collections for free with OpenVID.">
+<title>OpenVID — Video Collections</title>
 <style>
 *{box-sizing:border-box}
-body{min-height:100vh;margin:0;padding:24px;background:#f5f5f5;font-family:Arial,sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px}
+body{min-height:100vh;margin:0;padding:24px;background:#f5f5f5;color:#202124;font-family:Arial,sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px}
 .site-search{display:flex;gap:8px;align-items:center;width:min(100%,560px);margin:0 auto 12px}
 .site-search input{min-width:0;flex:1;padding:12px 14px;border:1px solid #b7c8d5;border-radius:9px;font:inherit}
 .site-search button{padding:12px 18px;border:0;border-radius:9px;background:#168bd2;color:#fff;font:inherit;font-weight:bold;cursor:pointer}
-.collections{display:flex;justify-content:center;align-items:stretch;flex-wrap:wrap;gap:18px}
+.collections{display:flex;justify-content:center;align-items:stretch;flex-wrap:wrap;gap:18px;width:min(100%,900px)}
 .collection{display:flex;align-items:center;justify-content:center;gap:10px;width:200px;min-height:60px;padding:12px;border-radius:30px;text-decoration:none;color:#111;font-weight:bold;font-size:18px;box-shadow:0 4px 8px #0003;transition:transform .2s,filter .2s}
 .collection:hover{transform:translateY(-2px);filter:brightness(.95)}
 .popeye{background:#fc0}.looney{background:#b8e5ff}
 .popeye-icon{width:30px;height:30px;background:url('https://cdn.savedly.net/7fdjhaez') center/contain no-repeat}
+.intro{width:min(100%,900px);padding:clamp(24px,5vw,48px);background:#fff;border-radius:16px;line-height:1.7;box-shadow:0 4px 18px #0000000d}
+.intro h1{margin-top:0;font-size:1.8rem}.intro a,.footer a{color:#0879c9}
+.footer{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;font-size:.95rem}
 @media(max-width:480px){body{padding:16px}.collection{width:min(100%,280px)}}
 </style>
 </head>
@@ -23,96 +27,12 @@ body{min-height:100vh;margin:0;padding:24px;background:#f5f5f5;font-family:Arial
 <main class="collections" aria-label="Video collections">
 <a href="./popeye/index.html" class="collection popeye"><span class="popeye-icon" aria-hidden="true"></span>Popeye</a>
 <a href="./looney-tunes/index.html" class="collection looney">LOONEY TUNES</a>
-<style>
-.tool-md-preview, .export-container {
-  width: min(100%, 900px);
-  max-width: 900px;
-  min-height: 100%;
-  margin-inline: auto;
-  padding: clamp(32px, 5vw, 68px) clamp(22px, 5vw, 58px);
-  box-sizing: border-box;
-  overflow-wrap: anywhere;
-}
-.tool-md-preview img, .export-container img,
-.tool-md-preview video, .export-container video,
-.tool-md-preview svg, .export-container svg { max-width: 100%; height: auto; }
-.tool-md-preview pre, .export-container pre {
-  max-width: 100%;
-  margin: 1.4em 0;
-  padding: 1.05em 1.2em;
-  overflow-x: auto;
-  box-sizing: border-box;
-  color: var(--html-code-text) !important;
-  font-size: 0.9em;
-  line-height: 1.62;
-  tab-size: 2;
-}
-.tool-md-preview pre code, .export-container pre code {
-  display: block;
-  min-width: max-content;
-  border: 0;
-  background: transparent !important;
-  color: var(--html-code-text) !important;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-}
-.tool-md-preview table, .export-container table { max-width: 100%; overflow-x: auto; }
-@media (max-width: 640px) {
-  .tool-md-preview, .export-container { padding: 28px 20px; }
-  .tool-md-preview pre, .export-container pre { margin-inline: -4px; padding: 0.9em 1em; }
-}
-
-body { margin: 0; background: #f6f8fa; color: #1f2328; }
-.tool-md-preview, .export-container {
-  background: #ffffff;
-  color: #1f2328;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.65;
-  --html-code-text: #24292f;
-  --html-code-keyword: #cf222e;
-  --html-code-title: #8250df;
-  --html-code-string: #0a3069;
-  --html-code-number: #0550ae;
-  --html-code-comment: #6e7781;
-}
-h1, h2, h3, h4 { color: #1f2328; font-weight: 650; line-height: 1.25; }
-h1 { margin-bottom: 0.7em; padding-bottom: 0.32em; border-bottom: 1px solid #d8dee4; font-size: 2em; }
-h2 { margin-top: 1.75em; padding-bottom: 0.3em; border-bottom: 1px solid #d8dee4; font-size: 1.5em; }
-h3 { margin-top: 1.5em; font-size: 1.25em; }
-a { color: #0969da; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
-blockquote { margin: 1em 0; padding: 0 1em; border-left: 0.25em solid #d0d7de; color: #59636e; }
-code { border-radius: 6px; background: #eff1f3; color: #1f2328; padding: 0.18em 0.38em; font-size: 0.88em; }
-pre { border: 1px solid #d8dee4; border-radius: 8px; background: #f6f8fa; box-shadow: none; }
-pre code { background: transparent; padding: 0; }
-table { display: table; width: 100%; border-spacing: 0; border-collapse: collapse; }
-th { background: #f6f8fa; font-weight: 650; }
-th, td { border: 1px solid #d0d7de; padding: 0.55em 0.8em; }
-tr:nth-child(2n) { background: #f6f8fa; }
-hr { height: 1px; border: 0; background: #d8dee4; }
-img { border-radius: 6px; }
-
-.tool-md-preview pre .hljs-keyword, .export-container pre .hljs-keyword,
-.tool-md-preview pre .hljs-selector-tag, .export-container pre .hljs-selector-tag,
-.tool-md-preview pre .hljs-literal, .export-container pre .hljs-literal { color: var(--html-code-keyword) !important; }
-.tool-md-preview pre .hljs-title, .export-container pre .hljs-title,
-.tool-md-preview pre .hljs-title.function_, .export-container pre .hljs-title.function_,
-.tool-md-preview pre .hljs-built_in, .export-container pre .hljs-built_in { color: var(--html-code-title) !important; }
-.tool-md-preview pre .hljs-string, .export-container pre .hljs-string,
-.tool-md-preview pre .hljs-attr, .export-container pre .hljs-attr,
-.tool-md-preview pre .hljs-name, .export-container pre .hljs-name { color: var(--html-code-string) !important; }
-.tool-md-preview pre .hljs-number, .export-container pre .hljs-number,
-.tool-md-preview pre .hljs-symbol, .export-container pre .hljs-symbol,
-.tool-md-preview pre .hljs-variable, .export-container pre .hljs-variable { color: var(--html-code-number) !important; }
-.tool-md-preview pre .hljs-comment, .export-container pre .hljs-comment,
-.tool-md-preview pre .hljs-quote, .export-container pre .hljs-quote { color: var(--html-code-comment) !important; font-style: italic; }
-.tool-md-preview pre .hljs-params, .export-container pre .hljs-params,
-.tool-md-preview pre .hljs-punctuation, .export-container pre .hljs-punctuation { color: var(--html-code-text) !important; }
-</style>
-<div class="export-container">
-<h2 id="openvid">OpenVID</h2><p>watch and export old, clasic, public domain videos, or newer public domain videos for free, without registering. open vid is an open source video player. want to upload your own? send it to <a href="mailto:contact.sandboxbrowser.dev@proton.me">contact.sandboxbrowser.dev@proton.me</a> </p>
-<p>if it fits our <a href="guidelines.html">guidelines</a>, we will ad it.</p>
-
-</div>
+<section class="intro">
+<h1>OpenVID</h1>
+<p>Watch and download classic and other public-domain videos for free, without registering. OpenVID is an open-source video player and collection.</p>
+<p>Want to suggest a video? Email <a href="mailto:contact.sandboxbrowser.dev@proton.me">contact.sandboxbrowser.dev@proton.me</a>. Submissions must comply with our <a href="./guidelines.html">submission guidelines</a>.</p>
+</section>
 </main>
+<footer class="footer"><a href="./terms.html">Terms of Use</a><a href="./privacy.html">Privacy Policy</a><a href="./guidelines.html">Submission Guidelines</a></footer>
 </body>
 </html>
