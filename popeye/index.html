@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OpenVid — Popeye Videos</title>
+<meta name="description" content="Browse classic Popeye cartoons on OpenVID.">
+<title>OpenVID — Popeye Videos</title>
 <style>
 *{box-sizing:border-box}
 body{font-family:Arial,sans-serif;margin:0;padding:clamp(1rem,4vw,3rem);background:#fcf9f2;color:#222}
@@ -13,18 +14,22 @@ h1{margin:0;font-size:clamp(1.5rem,4vw,2rem)}
 .button{display:inline-block;padding:.8rem 1rem;background:#1769aa;color:#fff;text-decoration:none;border-radius:8px;overflow-wrap:anywhere}
 .button:hover{background:#0f4f85}
 .home{color:#1769aa;text-decoration:none;font-weight:bold}
-.site-search{display:flex;gap:8px;align-items:center;width:min(100% - 32px,560px);margin:16px auto;padding:0}.site-search input{min-width:0;flex:1;padding:11px 13px;border:1px solid #b7c8d5;border-radius:9px;font:inherit}.site-search button{padding:11px 17px;border:0;border-radius:9px;background:#168bd2;color:#fff;font:inherit;font-weight:bold;cursor:pointer}.site-search button:hover{background:#0872b6}
+.site-search{display:flex;gap:8px;align-items:center;width:min(100%,560px);margin:0 0 1.5rem auto}
+.site-search input{min-width:0;flex:1;padding:11px 13px;border:1px solid #b7c8d5;border-radius:9px;font:inherit}
+.site-search button{padding:11px 17px;border:0;border-radius:9px;background:#168bd2;color:#fff;font:inherit;font-weight:bold;cursor:pointer}
+.site-search button:hover{background:#0872b6}
+@media(max-width:480px){.site-search{margin-right:0}}
 </style>
 </head>
 <body>
 <form class="site-search" action="../search.html" method="get" role="search"><input type="search" name="q" placeholder="Search videos..." aria-label="Search videos" required><button type="submit">Search</button></form>
 <header><h1>Popeye Videos</h1><a class="home" href="../index.html">Back to Home</a></header>
 <main class="files">
-<a class="button" href="Aladdin-and-His-Wonderful-Lamp.HTML">Aladdin and His Wonderful Lamp</a>
-<a class="button" href="Popeye-the-Sailor-Meets-Ali-Baba%27s-Forty-Thieves.HTML">Popeye the Sailor Meets Ali Baba's Forty Thieves</a>
-<a class="button" href="Popeye-the-Sailor-Meets-Sindbad-the-Sailor.HTML">Popeye the Sailor Meets Sindbad the Sailor</a>
-<a class="button" href="popeye-for-the-president.html">Popeye for the President</a>
-<a class="button" href="little-sweepea-1936.html">Little Swee'pea (1936)</a>
+<a class="button" href="./Aladdin-and-His-Wonderful-Lamp/index.html">Aladdin and His Wonderful Lamp</a>
+<a class="button" href="./Popeye-the-Sailor-Meets-Ali-Baba%27s-Forty-Thieves/index.html">Popeye the Sailor Meets Ali Baba's Forty Thieves</a>
+<a class="button" href="./Popeye-the-Sailor-Meets-Sindbad-the-Sailor/index.html">Popeye the Sailor Meets Sindbad the Sailor</a>
+<a class="button" href="./popeye-for-the-president/index.html">Popeye for the President</a>
+<a class="button" href="./little-sweepea/index.html">Little Swee'pea (1936)</a>
 </main>
 </body>
 </html>
