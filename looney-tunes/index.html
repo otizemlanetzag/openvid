@@ -29,7 +29,7 @@ header{display:flex;align-items:center;justify-content:space-between;gap:1rem;fl
   const lines=(await response.text()).trim().split(/\r?\n/);const headers=parse(lines.shift()).map(x=>x.trim());
   const videos=lines.filter(x=>x.trim()).map(line=>{const values=parse(line),o={};headers.forEach((k,i)=>o[k]=(values[i]||"").trim());return o;}).filter(v=>v.category==="looney-tunes");
   root.replaceChildren();
-  videos.forEach(v=>{const a=document.createElement("a");a.className="button";a.href=v.page||v.url;a.textContent=v.name; if(!v.page){a.target="_blank";a.rel="noopener noreferrer";a.title="Open video file";}root.appendChild(a);});
+  videos.forEach(v=>{const a=document.createElement("a");a.className="button";a.href=v.page ? "../"+v.page.replace(/^\.\//,"") : v.url;a.textContent=v.name; if(!v.page){a.target="_blank";a.rel="noopener noreferrer";a.title="Open video file";}root.appendChild(a);});
   if(!videos.length)root.textContent="No videos found in videos.csv.";
  }catch(e){root.textContent="Could not load videos.csv. Please refresh.";console.error(e);}
 })();
