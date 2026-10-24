@@ -19,6 +19,20 @@ header{display:flex;align-items:center;justify-content:space-between;gap:1rem;fl
 <body>
 <form class="site-search" action="../search.html" method="get" role="search"><input type="search" name="q" placeholder="Search videos..." aria-label="Search videos" required><button type="submit">Search</button></form>
 <header><h1>Looney Tunes Videos</h1><a class="home" href="../index.html">Back to Home</a></header>
-<main class="files"><a class="button" href="./falling-hare/index.html">Falling Hare</a></main>
+<main class="files" id="video-list"><p>Loading videos…</p></main>
+<script>
+(async()=>{
+ const root=document.getElementById("video-list");
+ const parse=line=>{const a=[];let v="",q=false;for(let i=0;i<line.length;i++){const c=line[i];if(c==='"'&&q&&line[i+1]==='"'){v+='"';i++;}else if(c==='"')q=!q;else if(c===','&&!q){a.push(v);v="";}else v+=c;}a.push(v);return a;};
+ try{
+  const response=await fetch("../videos.csv",{cache:"no-store"});if(!response.ok)throw Error("CSV unavailable");
+  const lines=(await response.text()).trim().split(/\r?\n/);const headers=parse(lines.shift()).map(x=>x.trim());
+  const videos=lines.filter(x=>x.trim()).map(line=>{const values=parse(line),o={};headers.forEach((k,i)=>o[k]=(values[i]||"").trim());return o;}).filter(v=>v.category==="looney-tunes");
+  root.replaceChildren();
+  videos.forEach(v=>{const a=document.createElement("a");a.className="button";a.href=v.page||v.url;a.textContent=v.name; if(!v.page){a.target="_blank";a.rel="noopener noreferrer";a.title="Open video file";}root.appendChild(a);});
+  if(!videos.length)root.textContent="No videos found in videos.csv.";
+ }catch(e){root.textContent="Could not load videos.csv. Please refresh.";console.error(e);}
+})();
+</script>
 </body>
 </html>
