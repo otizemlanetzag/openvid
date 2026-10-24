@@ -49,7 +49,7 @@ async function loadVideos() {
     const item = {};
     headers.forEach((header, index) => item[header] = (fields[index] || "").trim());
     return item;
-  }).filter(video => video.title && video.url);
+  }).map(video => ({title: video.name || video.title || "", url: video.page || video.url || video.video_url || "", videoUrl: video.url || video.video_url || "", category: video.category || "", terms: video.keywords || video.terms || ""})).filter(video => video.title && (video.url || video.videoUrl));
 }
 const params=new URLSearchParams(window.location.search);
 const rawQuery=params.get("q")||"";
@@ -60,7 +60,7 @@ const root=document.getElementById("results");
 loadVideos().then(videos => {
   const matches=query?videos.filter(v=>(v.title+" "+(v.terms||"")).toLowerCase().includes(query)):[];
   document.getElementById("summary").textContent=query?matches.length+" result(s) found.":"Enter a title or keyword to find a video.";
-  matches.forEach(v=>{const a=document.createElement("a");a.className="result";a.href=v.url;a.textContent=v.title;root.appendChild(a);});
+  matches.forEach(v=>{const a=document.createElement("a");a.className="result";a.href=v.url||v.videoUrl;a.textContent=v.title;root.appendChild(a);});
   if(query&&!matches.length)document.getElementById("summary").textContent="No results found. Try a different search term.";
 }).catch(error => {
   document.getElementById("summary").textContent="Could not load the video list. Please refresh the page.";
