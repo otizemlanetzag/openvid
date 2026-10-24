@@ -11,19 +11,19 @@
 .site-search{display:flex;gap:8px;align-items:center;width:min(100% - 32px,560px);margin:16px auto;padding:0}.site-search input{min-width:0;flex:1;padding:11px 13px;border:1px solid #b7c8d5;border-radius:9px;font:inherit}.site-search button{padding:11px 17px;border:0;border-radius:9px;background:#168bd2;color:#fff;font:inherit;font-weight:bold;cursor:pointer}.site-search button:hover{background:#0872b6}</style>
 </head>
 <body>
-<form class="site-search" action="../search.html" method="get" role="search"><input type="search" name="q" placeholder="Search videos..." aria-label="Search videos" required><button type="submit">Search</button></form>
+<form class="site-search" action="../../search.html" method="get" role="search"><input type="search" name="q" placeholder="Search videos..." aria-label="Search videos" required><button type="submit">Search</button></form>
 <main class="video-container">
 <video controls playsinline preload="metadata">
 <source src="https://dn721802.ca.archive.org/0/items/aladdin-and-his-wonderful-lamp-1939/Aladdin%20and%20His%20Wonderful%20Lamp%20%281939%29.mp4" type="video/mp4">
 Your browser could not play this video. Try opening it in another browser.
 </video>
 <div class="video-title">Aladdin and His Wonderful Lamp</div>
-<nav class="navigation" aria-label="Navigation"><a href="index.html">All Videos</a><a href="../index.html">Home</a></nav>
+<nav class="navigation" aria-label="Navigation"><a href="../index.html">All Videos</a><a href="../../index.html">Home</a></nav>
 </main>
 <script>
 (async()=>{
  try{
-  const response=await fetch("../../videos.csv",{cache:"no-store"});
+  const response=await fetch("../videos.csv",{cache:"no-store"});
   if(!response.ok)throw Error("videos.csv unavailable");
   const text=await response.text();
   const parse=line=>{const a=[];let v="",q=false;for(let i=0;i<line.length;i++){const c=line[i];if(c==='"'&&q&&line[i+1]==='"'){v+='"';i++;}else if(c==='"')q=!q;else if(c===','&&!q){a.push(v);v="";}else v+=c;}a.push(v);return a;};
