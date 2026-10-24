@@ -24,7 +24,7 @@ Your browser could not play this video. Try opening it in another browser.
 <script>
 (async()=>{
  try{
-  const response=await fetch("../videos.csv",{cache:"no-store"});
+  const response=await fetch("../../videos.csv",{cache:"no-store"});
   if(!response.ok)throw Error("videos.csv unavailable");
   const text=await response.text();
   const parse=line=>{const a=[];let v="",q=false;for(let i=0;i<line.length;i++){const c=line[i];if(c==='"'&&q&&line[i+1]==='"'){v+='"';i++;}else if(c==='"')q=!q;else if(c===','&&!q){a.push(v);v="";}else v+=c;}a.push(v);return a;};
