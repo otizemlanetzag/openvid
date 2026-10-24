@@ -43,5 +43,20 @@ Your browser could not play this video. Try opening it in another browser.
   show();
 })();
 </script>
+<script>
+(async()=>{
+ try{
+  const response=await fetch("../../videos.csv",{cache:"no-store"});
+  if(!response.ok)throw Error("videos.csv unavailable");
+  const text=await response.text();
+  const parse=line=>{const a=[];let v="",q=false;for(let i=0;i<line.length;i++){const c=line[i];if(c==='"'&&q&&line[i+1]==='"'){v+='"';i++;}else if(c==='"')q=!q;else if(c===','&&!q){a.push(v);v="";}else v+=c;}a.push(v);return a;};
+  const lines=text.trim().split(/\r?\n/);const headers=parse(lines.shift()).map(x=>x.trim());
+  const rows=lines.filter(x=>x.trim()).map(line=>{const values=parse(line),o={};headers.forEach((k,i)=>o[k]=(values[i]||"").trim());return o;});
+  const item=rows.find(v=>(v.name||"").toLowerCase()==="falling hare (1943)".toLowerCase());
+  const video=document.querySelector("video");
+  if(item&&video&&item.url){let source=video.querySelector("source");if(!source){source=document.createElement("source");source.type="video/mp4";video.prepend(source);}source.src=item.url;video.load();}
+ }catch(error){console.error("Could not load video source from videos.csv",error);}
+})();
+</script>
 </body>
 </html>
