@@ -1,26 +1,25 @@
-name,url
-popeye for president, https://dn801208.us.archive.org/0/items/Popeye_forPresident/Popeye_forPresident_512kb.mp4
-aladdin and his wonderfull lamp, https://dn721802.ca.archive.org/0/items/aladdin-and-his-wonderful-lamp-1939/Aladdin%20and%20His%20Wonderful%20Lamp%20%281939%29.mp4
-popeye the sailor meets alibabas 40 thieves,https://archive.org/download/popeye-the-sailor-meets-ali-babas-forty-thieves-1937_202405/Popeye%20the%20Sailor%20Meets%20Ali%20Baba%27s%20Forty%20Thieves%20%281937%29.mp4
-popeye the sailor meets sinbad the sailor,https://archive.org/download/popeye-the-sailor-meets-sindbad-the-sailor-1936/Popeye%20the%20Sailor%20Meets%20Sindbad%20the%20Sailor%20%281936%29.mp4
-Little Swee'pea,https://archive.org/download/little-sweepea-1936/Little%20Swee%27pea%20%281936%29.mp4
-loony tunes: falling hare,https://archive.org/download/falling-hare-1943/Falling%20Hare%20%281943%29.mp4
-popeye: a date to skate,https://dn711205.ca.archive.org/0/items/popeye-pubdomain/A_Date_to_Skate.mp4
-popeye: a haul in one,https://dn711205.ca.archive.org/0/items/popeye-pubdomain/A_Haul_in_One.mp4
-popeye: ancient fistory,https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Ancient-Fistory.mp4
-popeye: asualt and flattery,https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Assualt-and-Flattery.mp4
-popeye: bride and gloom,https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Bride-and-Gloom.mp4
-popeye: customers wanted,https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Customers-Wanted.mp4
-popeye: fright to the finish, https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Fright-to-the-Finish.mp4
-popeye: gopher spinach,https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Gopher-Spinach.mp4
-popeye: greek mirthology,https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Greek-Mirthology.mp4
-popeye:insect to injury,https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Insect-to-Injury.mp4
-popeye: me-musical nephews,https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Me-Musical-Nephews.mp4
-popeye: out to punch,https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Out_to_Punch.mp4
-popeye: parlez vous woo,https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Parlez_Vous_Woo.mp4
-patriotic popeye,https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Patriotic_Popeye.mp4
-private eye popeye,https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Private_Eye_Popeye.mp4
-shuteye popeye,https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Shuteye_Popeye.mp4
-popeye: spooky swabs,https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Spooky_Swabs.mp4
-popeye: taxi turvy,https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Taxi-Turvy.mp4
-popeye image,https://archive.org/download/popeye-photo/Duck-ai-image-2026-10-21-19-16.jpeg
+name,url,category,page,keywords
+"Popeye for the President","https://dn801208.us.archive.org/0/items/Popeye_forPresident/Popeye_forPresident_512kb.mp4","popeye","./popeye/popeye-for-the-president/index.html","president election popeye cartoon"
+"Aladdin and His Wonderful Lamp","https://dn721802.ca.archive.org/0/items/aladdin-and-his-wonderful-lamp-1939/Aladdin%20and%20His%20Wonderful%20Lamp%20%281939%29.mp4","popeye","./popeye/Aladdin-and-His-Wonderful-Lamp/index.html","aladdin wonderful lamp popeye"
+"Popeye the Sailor Meets Ali Baba's Forty Thieves","https://archive.org/download/popeye-the-sailor-meets-ali-babas-forty-thieves-1937_202405/Popeye%20the%20Sailor%20Meets%20Ali%20Baba%27s%20Forty%20Thieves%20%281937%29.mp4","popeye","./popeye/Popeye-the-Sailor-Meets-Ali-Baba%27s-Forty-Thieves/index.html","ali baba forty thieves sailor popeye"
+"Popeye the Sailor Meets Sindbad the Sailor","https://archive.org/download/popeye-the-sailor-meets-sindbad-the-sailor-1936/Popeye%20the%20Sailor%20Meets%20Sindbad%20the%20Sailor%20%281936%29.mp4","popeye","./popeye/Popeye-the-Sailor-Meets-Sindbad-the-Sailor/index.html","sindbad sinbad sailor popeye"
+"Little Swee'pea (1936)","https://archive.org/download/little-sweepea-1936/Little%20Swee%27pea%20%281936%29.mp4","popeye","./popeye/little-sweepea/index.html","little sweepea swee'pea popeye 1936"
+"Falling Hare (1943)","https://archive.org/download/falling-hare-1943/Falling%20Hare%20%281943%29.mp4","looney-tunes","./looney-tunes/falling-hare/index.html","falling hare bugs bunny looney tunes 1943"
+"A Date to Skate","https://dn711205.ca.archive.org/0/items/popeye-pubdomain/A_Date_to_Skate.mp4","popeye","","date skate cartoon popeye"
+"A Haul in One","https://dn711205.ca.archive.org/0/items/popeye-pubdomain/A_Haul_in_One.mp4","popeye","","haul in one popeye"
+"Ancient Fistory","https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Ancient-Fistory.mp4","popeye","","ancient fistory popeye"
+"Assault and Flattery","https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Assualt-and-Flattery.mp4","popeye","","assault flattery popeye"
+"Bride and Gloom","https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Bride-and-Gloom.mp4","popeye","","bride gloom popeye"
+"Customers Wanted","https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Customers-Wanted.mp4","popeye","","customers wanted popeye"
+"Fright to the Finish","https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Fright-to-the-Finish.mp4","popeye","","fright finish popeye"
+"Gopher Spinach","https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Gopher-Spinach.mp4","popeye","","gopher spinach popeye"
+"Greek Mirthology","https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Greek-Mirthology.mp4","popeye","","greek mirthology popeye"
+"Insect to Injury","https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Insect-to-Injury.mp4","popeye","","insect injury popeye"
+"Me-Musical Nephews","https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Me-Musical-Nephews.mp4","popeye","","musical nephews popeye"
+"Out to Punch","https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Out_to_Punch.mp4","popeye","","out punch popeye"
+"Parlez Vous Woo","https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Parlez_Vous_Woo.mp4","popeye","","parlez vous woo popeye"
+"Patriotic Popeye","https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Patriotic_Popeye.mp4","popeye","","patriotic popeye"
+"Private Eye Popeye","https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Private_Eye_Popeye.mp4","popeye","","private eye popeye"
+"Shuteye Popeye","https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Shuteye_Popeye.mp4","popeye","","shuteye popeye"
+"Spooky Swabs","https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Spooky_Swabs.mp4","popeye","","spooky swabs popeye"
+"Taxi Turvy","https://dn711205.ca.archive.org/0/items/popeye-pubdomain/Taxi-Turvy.mp4","popeye","","taxi turvy popeye"
