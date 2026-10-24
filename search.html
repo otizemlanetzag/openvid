@@ -25,26 +25,47 @@ h1{font-size:clamp(1.5rem,4vw,2.2rem)}.results{display:grid;gap:12px}.result{dis
 <main><h1 id="heading">Search results</h1><p class="muted" id="summary"></p><div class="results" id="results"></div></main>
 <footer class="site-footer"><a href="./terms.html">Terms of Use</a><a href="./privacy.html">Privacy Policy</a><a href="./guidelines.html">Submission Guidelines</a></footer>
 <script>
-const videos = [
- {title:"Popeye collection",url:"./popeye/index.html",terms:"popeye videos cartoon sailor"},
- {title:"Aladdin and His Wonderful Lamp",url:"./popeye/Aladdin-and-His-Wonderful-Lamp/index.html",terms:"popeye aladdin wonderful lamp"},
- {title:"Popeye the Sailor Meets Ali Baba's Forty Thieves",url:"./popeye/Popeye-the-Sailor-Meets-Ali-Baba's-Forty-Thieves/index.html",terms:"popeye ali baba forty thieves sailor"},
- {title:"Popeye the Sailor Meets Sindbad the Sailor",url:"./popeye/Popeye-the-Sailor-Meets-Sindbad-the-Sailor/index.html",terms:"popeye sindbad sailor"},
- {title:"Popeye for the President",url:"./popeye/popeye-for-the-president/index.html",terms:"popeye president"},
- {title:"Little Swee'pea (1936)",url:"./popeye/little-sweepea/index.html",terms:"popeye little sweepea swee'pea 1936"},
- {title:"Looney Tunes collection",url:"./looney-tunes/index.html",terms:"looney tunes cartoons bugs bunny"},
- {title:"Falling Hare",url:"./looney-tunes/falling-hare/index.html",terms:"falling hare bugs bunny looney tunes cartoon"}
-];
+async function loadVideos() {
+  const response = await fetch("./videos.csv", { cache: "no-store" });
+  if (!response.ok) throw new Error("Could not load videos.csv");
+  const csv = await response.text();
+  const rows = csv.trim().split(/\r?\n/);
+  const parseRow = (line) => {
+    const fields = [];
+    let field = "", quoted = false;
+    for (let i = 0; i < line.length; i++) {
+      const char = line[i];
+      if (char === '"' && quoted && line[i + 1] === '"') { field += '"'; i++; }
+      else if (char === '"') quoted = !quoted;
+      else if (char === ',' && !quoted) { fields.push(field); field = ""; }
+      else field += char;
+    }
+    fields.push(field);
+    return fields;
+  };
+  const headers = parseRow(rows.shift()).map(value => value.trim());
+  return rows.filter(line => line.trim()).map(line => {
+    const fields = parseRow(line);
+    const item = {};
+    headers.forEach((header, index) => item[header] = (fields[index] || "").trim());
+    return item;
+  }).filter(video => video.title && video.url);
+}
 const params=new URLSearchParams(window.location.search);
 const rawQuery=params.get("q")||"";
 const query=rawQuery.trim().toLowerCase();
 document.getElementById("q").value=rawQuery;
 document.getElementById("heading").textContent=query?'Results for "'+rawQuery.trim()+'"':"Search OpenVID";
-const matches=query?videos.filter(v=>(v.title+" "+v.terms).toLowerCase().includes(query)):[];
-document.getElementById("summary").textContent=query?matches.length+" result(s) found.":"Enter a title or keyword to find a video.";
 const root=document.getElementById("results");
-matches.forEach(v=>{const a=document.createElement("a");a.className="result";a.href=v.url;a.textContent=v.title;root.appendChild(a);});
-if(query&&!matches.length)document.getElementById("summary").textContent="No results found. Try a different search term.";
+loadVideos().then(videos => {
+  const matches=query?videos.filter(v=>(v.title+" "+(v.terms||"")).toLowerCase().includes(query)):[];
+  document.getElementById("summary").textContent=query?matches.length+" result(s) found.":"Enter a title or keyword to find a video.";
+  matches.forEach(v=>{const a=document.createElement("a");a.className="result";a.href=v.url;a.textContent=v.title;root.appendChild(a);});
+  if(query&&!matches.length)document.getElementById("summary").textContent="No results found. Try a different search term.";
+}).catch(error => {
+  document.getElementById("summary").textContent="Could not load the video list. Please refresh the page.";
+  console.error(error);
+});
 </script>
 </body>
 </html>
